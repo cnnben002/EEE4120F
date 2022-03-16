@@ -11,9 +11,12 @@ __kernel void HelloWorld(__global int* argument1, __global int* argument2, __glo
 	
 	//short calculation: work Item Number x argument 1 + argument 2
 	//TODO: perform the required calculation
-	printf("Hello World\n");
+	output[workItemNum] = workItemNum * arg1 + arg2;
+	
 
 	//TODO: print the work item, work group and arguments
+	printf("Hi from work item: %d\t work group:%d\t Arg1: %d\t Arg2: %d\t Output: %d\n", workItemNum, workGroupNum, arg1, arg2, output[workItemNum]);	
+
 	/*
 	Expected Output:
 	Hi from work item: 0 	 work group:0 	 Arg1: 10 	 Arg2: 20 	 Output: 20 
