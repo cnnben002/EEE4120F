@@ -43,7 +43,20 @@ __kernel void HelloWorld(__global int* argument1, __global int* argument2, __glo
 	
 	//adding the outputs for each group---------------------------------------------
 	int groupValue = 0;
-	//TODO: Add all the work items in each work group and output the work groups total 
+
+	//TODO: Add all the work items in each work group and output the work groups total
+	if (localGroupID == 0)
+	{
+		int size = 4;		
+		
+		for (int i = 0; i < size; i++)
+		{
+			groupValue += output[workItemNum + i];
+		}
+		
+		printf("groupValue: %d\t Work item:%d\t Work group: %d\n", groupValue, workItemNum, workGroupNum);
+	}
+
 	//Expected output:
 	//groupValue: 300 	 Work item:4 	 Work group: 1 
 	//groupValue: 620 	 Work item:12 	 Work group: 3 
